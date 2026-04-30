@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>つながりの灯 | ひとりで抱えない子育てを、当たり前に。</title>
+<style>
+  :root{
+    --main:#0a4a8a;
+    --accent:#e60012;
+    --bg:#f5f7fa;
+    --text:#1a1a1a;
+    --muted:#666;
+    --border:#e2e6eb;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family: "Noto Sans JP","Helvetica Neue","Hiragino Kaku Gothic ProN",sans-serif;
+    margin:0;
+    color:var(--text);
+    line-height:1.7;
+    background:#fff;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ===== Header ===== */
+  .header{
+    position:sticky;top:0;z-index:100;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{
+    max-width:1200px;margin:auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{font-weight:700;font-size:20px;color:var(--main);letter-spacing:.05em;}
+  .logo small{display:block;font-size:11px;color:var(--muted);font-weight:400;letter-spacing:.1em;}
+  .gnav{display:flex;gap:28px;font-size:14px;}
+  .gnav a:hover{color:var(--main);}
+  .header-cta{
+    background:var(--accent);color:#fff;
+    padding:10px 20px;border-radius:2px;
+    font-size:13px;font-weight:700;
+  }
+  @media(max-width:768px){.gnav{display:none;}}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;height:560px;overflow:hidden;color:#fff;
+  }
+  .hero img{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(.6);
+  }
+  .hero-text{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:0 24px 80px;
+    max-width:1200px;margin:auto;
+  }
+  .hero-tag{
+    display:inline-block;
+    border-left:4px solid var(--accent);
+    padding:4px 14px;font-size:13px;letter-spacing:.15em;
+    background:rgba(0,0,0,.3);
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:42px;line-height:1.4;margin:0 0 16px;
+    font-weight:700;letter-spacing:.05em;
+  }
+  .hero p{font-size:16px;max-width:600px;}
+  @media(max-width:768px){
+    .hero{height:440px;}
+    .hero h1{font-size:26px;}
+    .hero-text{padding-bottom:40px;}
+  }
+
+  /* ===== Section common ===== */
+  section{padding:80px 24px;}
+  .container{max-width:1200px;margin:auto;}
+  .sec-head{margin-bottom:48px;}
+  .sec-head .en{
+    color:var(--main);font-size:13px;letter-spacing:.2em;font-weight:700;
+    display:block;margin-bottom:8px;
+  }
+  .sec-head h2{
+    font-size:32px;margin:0;font-weight:700;letter-spacing:.05em;
+  }
+  .sec-head .line{
+    width:40px;height:3px;background:var(--accent);margin-top:18px;
+  }
+
+  /* ===== News ===== */
+  .news{background:#fff;}
+  .news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);gap:32px;
+  }
+  .news-card{
+    border-top:2px solid var(--main);
+    padding-top:18px;
+  }
+  .news-card .thumb{
+    width:100%;aspect-ratio:16/10;object-fit:cover;margin-bottom:14px;
+  }
+  .news-meta{display:flex;gap:10px;font-size:12px;margin-bottom:8px;}
+  .news-date{color:var(--muted);}
+  .news-tag{
+    background:var(--main);color:#fff;padding:2px 10px;font-size:11px;
+  }
+  .news-card h3{font-size:15px;margin:0;line-height:1.6;font-weight:700;}
+  @media(max-width:768px){.news-grid{grid-template-columns:1fr;}}
+
+  /* ===== Pickup feature ===== */
+  .pickup{background:var(--bg);}
+  .pickup-row{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;
+  }
+  .pickup-row img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+  .pickup-row h3{font-size:24px;line-height:1.5;margin:8px 0 16px;}
+  .pickup-row .more{
+    display:inline-block;border:1px solid var(--main);color:var(--main);
+    padding:10px 28px;font-size:13px;font-weight:700;margin-top:12px;
+  }
+  @media(max-width:768px){.pickup-row{grid-template-columns:1fr;}}
+
+  /* ===== Projects ===== */
+  .projects-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid var(--border);border-left:1px solid var(--border);
+  }
+  .project-card{
+    border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:36px 28px;background:#fff;
+    transition:.2s;
+  }
+  .project-card:hover{background:var(--bg);}
+  .project-icon{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;margin-bottom:18px;
+  }
+  .project-card h3{font-size:18px;margin:0 0 8px;}
+  .project-card p{font-size:14px;color:var(--muted);margin:0 0 16px;}
+  .project-card .arrow{font-size:13px;color:var(--main);font-weight:700;}
+  @media(max-width:768px){.projects-grid{grid-template-columns:1fr;}}
+
+  /* ===== Numbers ===== */
+  .numbers{background:var(--main);color:#fff;}
+  .numbers .sec-head h2{color:#fff;}
+  .numbers .sec-head .en{color:#9ec3ec;}
+  .numbers-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .num-item{text-align:center;padding:24px 12px;border-left:1px solid rgba(255,255,255,.2);}
+  .num-item:first-child{border-left:none;}
+  .num-item .big{font-size:48px;font-weight:700;line-height:1;}
+  .num-item .big small{font-size:18px;margin-left:4px;}
+  .num-item .label{font-size:13px;margin-top:10px;color:#cfe0f3;}
+  @media(max-width:768px){
+    .numbers-grid{grid-template-columns:repeat(2,1fr);}
+    .num-item{border-left:none;}
+  }
+
+  /* ===== Stories / Voice ===== */
+  .stories-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:32px;
+  }
+  .story{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;align-items:center;}
+  .story img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:50%;}
+  .story .label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.1em;}
+  .story h3{font-size:17px;margin:6px 0 10px;line-height:1.5;}
+  .story p{font-size:13px;color:var(--muted);margin:0;}
+  @media(max-width:768px){.stories-grid{grid-template-columns:1fr;}}
+
+  /* ===== Donate CTA ===== */
+  .donate{
+    background:url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=1600&auto=format&fit=crop&q=80') center/cover;
+    color:#fff;text-align:center;position:relative;
+  }
+  .donate::before{
+    content:"";position:absolute;inset:0;background:rgba(10,74,138,.85);
+  }
+  .donate .container{position:relative;}
+  .donate h2{font-size:32px;margin:0 0 16px;}
+  .donate p{font-size:15px;margin:0 0 32px;}
+  .donate-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--accent);color:#fff;padding:16px 40px;
+    font-weight:700;font-size:15px;letter-spacing:.05em;
+  }
+  .btn-outline{
+    border:2px solid #fff;color:#fff;padding:14px 38px;
+    font-weight:700;font-size:15px;
+  }
+
+  /* ===== Footer ===== */
+  footer{background:#0d2540;color:#cfd6df;padding:60px 24px 24px;}
+  .footer-inner{max-width:1200px;margin:auto;}
+  .footer-cols{
+    display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;
+    padding-bottom:40px;border-bottom:1px solid #1f3a5c;
+  }
+  .footer-cols h4{color:#fff;font-size:14px;margin:0 0 16px;}
+  .footer-cols ul{list-style:none;padding:0;margin:0;font-size:13px;}
+  .footer-cols li{margin-bottom:8px;}
+  .footer-cols li a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:24px;font-size:12px;color:#7d8a9a;
+  }
+  @media(max-width:768px){.footer-cols{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">つながりの灯<small>TSUNAGARI NO AKARI</small></a>
+    <nav class="gnav">
+      <a href="#about">私たちについて</a>
+      <a href="#projects">活動内容</a>
+      <a href="#news">お知らせ</a>
+      <a href="#stories">ストーリー</a>
+    </nav>
+    <a href="#donate" class="header-cta">支援する</a>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" style="padding:0;">
+  <img src="https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?w=1600&auto=format&fit=crop&q=80" alt="親子">
+  <div class="hero-text">
+    <span class="hero-tag">SOCIAL ACTION FOR FAMILIES</span>
+    <h1>ひとりで抱えない子育てを、<br>当たり前に。</h1>
+    <p>孤立するママに、つながりと安心を届ける。<br>声にならない声に、私たちは耳を澄まします。</p>
+  </div>
+</section>
+
+<!-- ===== News ===== -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">NEWS</span>
+      <h2>お知らせ</h2>
+      <div class="line"></div>
+    </div>
+    <div class="news-grid">
+      <a href="#" class="news-card">
+        <img class="thumb" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80" alt="">
+        <div class="news-meta">
+          <span class="news-date">2026.04.20</span>
+          <span class="news-tag">お知らせ</span>
+        </div>
+        <h3>春のオンライン交流会、参加者を募集します</h3>
+      </a>
+      <a href="#" class="news-card">
+        <img class="thumb" src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&auto=format&fit=crop&q=80" alt="">
+        <div class="news-meta">
+          <span class="news-date">2026.04.10</span>
+          <span class="news-tag">活動報告</span>
+        </div>
+        <h3>LINE相談 累計3,500件を達成しました</h3>
+      </a>
+      <a href="#" class="news-card">
+        <img class="thumb" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&auto=format&fit=crop&q=80" alt="">
+        <div class="news-meta">
+          <span class="news-date">2026.03.28</span>
+          <span class="news-tag">メディア</span>
+        </div>
+        <h3>地元紙に当団体の活動が紹介されました</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pickup ===== -->
+<section class="pickup">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">PICK UP</span>
+      <h2>特集</h2>
+      <div class="line"></div>
+    </div>
+    <div class="pickup-row">
+      <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&auto=format&fit=crop&q=80" alt="">
+      <div>
+        <span class="hero-tag" style="background:var(--main);color:#fff;">STORY</span>
+        <h3>「もう、ひとりじゃない」<br>ある母親の手紙から始まった、私たちの活動</h3>
+        <p>誰にも頼れない日々の中で、少し話せる場所があればどれだけ救われたか。<br>その小さな声が、この活動の出発点でした。</p>
+        <a href="#" class="more">続きを読む →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Projects ===== -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">OUR PROJECTS</span>
+      <h2>活動内容</h2>
+      <div class="line"></div>
+    </div>
+    <div class="projects-grid">
+      <a href="#" class="project-card">
+        <div class="project-icon">💬</div>
+        <h3>LINE相談</h3>
+        <p>匿名・無料で、今日の気持ちを言葉にできる場所。</p>
+        <span class="arrow">詳しく見る →</span>
+      </a>
+      <a href="#" class="project-card">
+        <div class="project-icon">👥</div>
+        <h3>オンラインコミュニティ</h3>
+        <p>同じ悩みを持つ仲間と、いつでも繋がれる居場所。</p>
+        <span class="arrow">詳しく見る →</span>
+      </a>
+      <a href="#" class="project-card">
+        <div class="project-icon">☕</div>
+        <h3>地域の交流会</h3>
+        <p>顔を合わせて話せる、月1回のリアルな集まり。</p>
+        <span class="arrow">詳しく見る →</span>
+      </a>
+      <a href="#" class="project-card">
+        <div class="project-icon">📚</div>
+        <h3>学びの講座</h3>
+        <p>子育てのヒントを専門家から学べるオンライン講座。</p>
+        <span class="arrow">詳しく見る →</span>
+      </a>
+      <a href="#" class="project-card">
+        <div class="project-icon">🤝</div>
+        <h3>支援者ネットワーク</h3>
+        <p>地域の人・企業と連携し、ママを社会で支える仕組み。</p>
+        <span class="arrow">詳しく見る →</span>
+      </a>
+      <a href="#" class="project-card">
+        <div class="project-icon">📣</div>
+        <h3>啓発・発信</h3>
+        <p>「孤育て」を社会の課題として広く伝えていきます。</p>
+        <span class="arrow">詳しく見る →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Numbers ===== -->
+<section class="numbers">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">NUMBERS</span>
+      <h2>数字で見る、私たちの活動</h2>
+      <div class="line" style="background:#fff;"></div>
+    </div>
+    <div class="numbers-grid">
+      <div class="num-item"><div class="big">1,200<small>人</small></div><div class="label">利用者</div></div>
+      <div class="num-item"><div class="big">3,500<small>件</small></div><div class="label">相談実績</div></div>
+      <div class="num-item"><div class="big">48<small>回</small></div><div class="label">交流会開催</div></div>
+      <div class="num-item"><div class="big">15<small>地域</small></div><div class="label">活動エリア</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stories ===== -->
+<section id="stories">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">VOICE</span>
+      <h2>利用者の声</h2>
+      <div class="line"></div>
+    </div>
+    <div class="stories-grid">
+      <a href="#" class="story">
+        <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&auto=format&fit=crop&q=80" alt="">
+        <div>
+          <span class="label">VOICE 01</span>
+          <h3>「夜中に泣いていた私を、文字が救ってくれました」</h3>
+          <p>30代 / 第一子育児中</p>
+        </div>
+      </a>
+      <a href="#" class="story">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&auto=format&fit=crop&q=80" alt="">
+        <div>
+          <span class="label">VOICE 02</span>
+          <h3>「同じ気持ちの人がいると知って、息ができた」</h3>
+          <p>20代 / 双子のママ</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Donate ===== -->
+<section class="donate" id="donate">
+  <div class="container">
+    <span class="hero-tag">SUPPORT US</span>
+    <h2>あなたの支援が、誰かの「灯」になる。</h2>
+    <p>毎月のご寄付・単発のご支援、どちらも大きな力になります。</p>
+    <div class="donate-btns">
+      <a href="#" class="btn-primary">寄付して支援する</a>
+      <a href="#" class="btn-outline">ボランティアに参加</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div>
+        <h4>つながりの灯</h4>
+        <p style="font-size:12px;line-height:1.8;">ひとりで抱えない子育てを、当たり前に。<br>孤立するママに、つながりと安心を届けます。</p>
+      </div>
+      <div>
+        <h4>私たちについて</h4>
+        <ul>
+          <li><a href="#">代表メッセージ</a></li>
+          <li><a href="#">団体概要</a></li>
+          <li><a href="#">スタッフ紹介</a></li>
+          <li><a href="#">沿革</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>活動</h4>
+        <ul>
+          <li><a href="#">LINE相談</a></li>
+          <li><a href="#">交流会</a></li>
+          <li><a href="#">オンライン講座</a></li>
+          <li><a href="#">活動報告</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支援する</h4>
+        <ul>
+          <li><a href="#">寄付する</a></li>
+          <li><a href="#">マンスリーサポーター</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 つながりの灯 All rights reserved.</span>
+      <span>プライバシーポリシー / 利用規約</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
